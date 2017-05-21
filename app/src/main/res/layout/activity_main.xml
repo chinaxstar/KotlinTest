@@ -18,5 +18,9 @@
             android:drawablePadding="5dp"
             android:padding="@dimen/dp_10"
             />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/app_recommend_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
     </RelativeLayout>
 </layout>
