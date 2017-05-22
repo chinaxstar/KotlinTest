@@ -17,10 +17,14 @@
             android:drawableLeft="@android:drawable/ic_search_category_default"
             android:drawablePadding="5dp"
             android:padding="@dimen/dp_10"
+            android:text="34262319910624851"
             />
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/app_recommend_tv"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_below="@id/search_server_et"
+            android:layout_marginTop="@dimen/dp_10"/>
     </RelativeLayout>
 </layout>
