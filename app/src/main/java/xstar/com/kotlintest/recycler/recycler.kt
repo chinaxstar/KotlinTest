@@ -18,11 +18,11 @@ class BaseVH constructor(item: View) : RecyclerView.ViewHolder(item) {
 
 abstract class BaseAdapter<T> : RecyclerView.Adapter<BaseVH>() {
     var itemList: List<T>? = null
-    var layout: Int? = null
+    var layout: Int? = 0
     var inflate: LayoutInflater? = null
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): BaseVH {
         if (inflate == null) inflate = LayoutInflater.from(parent?.context)
-        return BaseVH(inflate!!.inflate(android.R.layout.simple_list_item_1, parent, false))
+        return BaseVH(inflate!!.inflate(layout!!, parent, false))
     }
 
     override fun getItemCount(): Int {

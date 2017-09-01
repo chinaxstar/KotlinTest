@@ -2,4 +2,6 @@
     <string name="app_name">KotlinTest</string>
     <string name="hello">hello kotlin!</string>
     <string name="search_text">搜索</string>
+    <string name="author_name_label">作者：</string>
+    <string name="publish_date_label">发布时间：</string>
 </resources>
