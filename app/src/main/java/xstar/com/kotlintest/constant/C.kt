@@ -11,4 +11,7 @@ object C {
     val QQ_GROUP = 0x2
     val TEL_NUMBER = 0x3
     val PHOME_NUMBER = 0x4
+
+    val INTENT_URL_KEY = "intent.url.key"
+    val GANK_TYPES = arrayOf("all", "福利", "Android", "iOS", "休息视频", "拓展资源", "前端", "瞎推荐", "App")
 }

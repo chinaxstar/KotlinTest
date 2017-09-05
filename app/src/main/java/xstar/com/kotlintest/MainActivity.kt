@@ -53,14 +53,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     val rvAdapter = object : BaseAdapter<Int>() {
-        override fun onBindViewHolder(holder: BaseVH?, position: Int) {
+        override fun onBindView(holder: BaseVH?, position: Int) {
             holder?.itemView?.setOnClickListener { onItemClickListener?.onItemClick(this, it, position) }
             val item = itemList!![position]
             val result = when (item) {
                 0 -> "身份证查询"
                 else -> "未查询到结果"
             }
-            holder?.find<TextView>(android.R.id.text1)?.setText(result)
+            holder?.find<TextView>(android.R.id.text1)?.text = result
         }
 
         init {

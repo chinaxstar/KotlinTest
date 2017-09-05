@@ -55,7 +55,7 @@ class HttpMethods {
     }
 
     fun getGankTypeArticles(type: String = "all", page: Int = 1, subscriber: Subscriber<GankData<GankArticle>>) {
-        gankService.value?.gankAricles(type, page)!!.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(Consumer { subscriber.onNext(it) })
+        gankService.value?.gankAricles(type, page)!!.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe({ subscriber.onNext(it) })
     }
 
     fun findIDInfo(idNum: String, subscriber: Subscriber<JuHeRep<IDInfo>>) {
