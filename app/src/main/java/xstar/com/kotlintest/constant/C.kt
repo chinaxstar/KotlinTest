@@ -14,4 +14,6 @@ object C {
 
     val INTENT_URL_KEY = "intent.url.key"
     val GANK_TYPES = arrayOf("all", "福利", "Android", "iOS", "休息视频", "拓展资源", "前端", "瞎推荐", "App")
+
+    val IMG_URL_KEY = "gank_img_path"
 }

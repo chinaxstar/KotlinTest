@@ -11,6 +11,7 @@ import com.bumptech.glide.Priority
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
+import xstar.com.kotlintest.MyApp
 import xstar.com.kotlintest.R
 import xstar.com.kotlintest.constant.C
 import xstar.com.kotlintest.data.GankArticle
@@ -32,12 +33,12 @@ open abstract class BaseAdapter<T> : RecyclerView.Adapter<BaseVH>() {
     var footLayout: Int? = 0
     var inflate: LayoutInflater? = null
     var hasFooter = false
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): BaseVH {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseVH {
         if (inflate == null) inflate = LayoutInflater.from(parent?.context)
         return BaseVH(inflate!!.inflate(viewType, parent, false))
     }
 
-    override fun onBindViewHolder(holder: BaseVH?, position: Int) {
+    override fun onBindViewHolder(holder: BaseVH, position: Int) {
         if (hasFooter && position == itemCount - 1) {
             holder?.itemView?.setOnClickListener { onFootClickListener?.onItemClick(this, it, position) }
             onFootBind(holder, position)
@@ -72,7 +73,7 @@ open abstract class BaseAdapter<T> : RecyclerView.Adapter<BaseVH>() {
 }
 
 class GankAdapter : BaseAdapter<GankArticle>() {
-    val options = RequestOptions().centerCrop().priority(Priority.NORMAL).diskCacheStrategy(DiskCacheStrategy.NONE)!!
+    val options = MyApp.DEFAULT_OPTIONS
     val tranOption = DrawableTransitionOptions().crossFade(450)!!
     override fun onBindView(holder: BaseVH?, position: Int) {
         holder?.itemView?.setOnClickListener { onItemClickListener?.onItemClick(this, it, position) }

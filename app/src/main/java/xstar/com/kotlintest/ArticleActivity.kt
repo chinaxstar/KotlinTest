@@ -14,12 +14,12 @@ class ArticleActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_article)
         val url = intent.getStringExtra(INTENT_URL_KEY)
-        val webclient=WebChromeClient()
-        val viewClient=WebViewClient()
-        content.settings.javaScriptEnabled=true
-        content.settings.layoutAlgorithm=WebSettings.LayoutAlgorithm.NORMAL
-        content.setWebChromeClient(webclient)
-        content.setWebViewClient(viewClient)
+        val webclient = WebChromeClient()
+        val viewClient = WebViewClient()
+        content.settings.javaScriptEnabled = true
+        content.settings.layoutAlgorithm = WebSettings.LayoutAlgorithm.NORMAL
+        content.webChromeClient = webclient
+        content.webViewClient = viewClient
         content.loadUrl(url)
     }
 }

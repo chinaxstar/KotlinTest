@@ -45,6 +45,9 @@ class GankMainActivity : AppCompatActivity() {
                     startActivity(intent)
                 } else {
                     //图片
+                    val intent = Intent(this@GankMainActivity, ImageActivity::class.java)
+                    intent.putExtra(C.IMG_URL_KEY, item?.url)
+                    startActivity(intent)
                 }
             }
         }
