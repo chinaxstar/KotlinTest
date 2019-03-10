@@ -1,13 +1,16 @@
 package xstar.com.kotlintest
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.webkit.WebChromeClient
 import android.webkit.WebSettings
 import android.webkit.WebViewClient
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_article.*
 import xstar.com.kotlintest.constant.C.INTENT_URL_KEY
 
+/**
+ * webview 显示网页
+ */
 class ArticleActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

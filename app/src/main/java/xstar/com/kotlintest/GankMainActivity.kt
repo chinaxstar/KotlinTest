@@ -2,23 +2,26 @@ package xstar.com.kotlintest
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.util.Log
-import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_gank_main.*
 import xstar.com.kotlintest.apis.HttpMethods
 import xstar.com.kotlintest.constant.C
 import xstar.com.kotlintest.data.GankArticle
 import xstar.com.kotlintest.data.GankData
 import xstar.com.kotlintest.data.SimpleSubscribe
-import xstar.com.kotlintest.recycler.BaseAdapter.OnItemClickListener
 import xstar.com.kotlintest.recycler.BaseVH
 import xstar.com.kotlintest.recycler.GankAdapter
+import xstar.com.kotlintest.recycler.OnItemClickListener
 import xstar.com.kotlintest.recycler.TypeAdapter
 
+/**
+ * Retrofit + rxjava
+ *
+ * glide 图片显示
+ */
 class GankMainActivity : AppCompatActivity() {
 
     val http = lazy { HttpMethods() }
@@ -29,44 +32,40 @@ class GankMainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_gank_main)
-        gankAdapter.itemList = dataList
+        gankAdapter.datas = dataList
         gank_rv.layoutManager = LinearLayoutManager(this)
         gank_rv.adapter = gankAdapter
         refresh_srl.setOnRefreshListener {
             pageNum = 1
             getData(type, pageNum)
         }
-        gankAdapter.onItemClickListener = object : OnItemClickListener {
-            override fun onItemClick(adapter: RecyclerView.Adapter<BaseVH>, view: View, position: Int) {
-                val item = gankAdapter.itemList?.get(position)
-                if (!C.GANK_TYPES[1].equals(item?.type)) {
-                    val intent = Intent(this@GankMainActivity, ArticleActivity::class.java)
-                    intent.putExtra(C.INTENT_URL_KEY, item?.url)
-                    startActivity(intent)
-                } else {
-                    //图片
-                    val intent = Intent(this@GankMainActivity, ImageActivity::class.java)
-                    intent.putExtra(C.IMG_URL_KEY, item?.url)
-                    startActivity(intent)
-                }
-            }
-        }
-        gankAdapter.onFootClickListener = object : OnItemClickListener {
-            override fun onItemClick(adapter: RecyclerView.Adapter<BaseVH>, view: View, position: Int) {
-                pageNum++
-                getData(type, pageNum)
-            }
-        }
-        typeAdapter.itemList = C.GANK_TYPES.toList()
-        typeAdapter.onItemClickListener = object : OnItemClickListener {
-            override fun onItemClick(adapter: RecyclerView.Adapter<BaseVH>, view: View, position: Int) {
-                val name = typeAdapter.itemList?.get(position)
-                if (name != null) {
-                    type = name
-                    pageNum = 1
-                    refresh_srl.isRefreshing = true
+        gankAdapter.onItemClickListner = object : OnItemClickListener<GankArticle> {
+            override fun onItemClick(holder: BaseVH, position: Int, item: GankArticle) {
+                if (position == gankAdapter.itemCount - 1) {
+                    pageNum++
                     getData(type, pageNum)
+                } else {
+                    if (C.GANK_TYPES[1] != item.type) {
+                        val intent = Intent(this@GankMainActivity, ArticleActivity::class.java)
+                        intent.putExtra(C.INTENT_URL_KEY, item.url)
+                        startActivity(intent)
+                    } else {
+                        //图片
+                        val intent = Intent(this@GankMainActivity, ImageActivity::class.java)
+                        intent.putExtra(C.IMG_URL_KEY, item.url)
+                        startActivity(intent)
+                    }
                 }
+            }
+        }
+
+        typeAdapter.datas = C.GANK_TYPES.toMutableList()
+        typeAdapter.onItemClickListner = object : OnItemClickListener<String> {
+            override fun onItemClick(holder: BaseVH, position: Int, item: String) {
+                type = item
+                pageNum = 1
+                refresh_srl.isRefreshing = true
+                getData(type, pageNum)
             }
         }
         types.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)

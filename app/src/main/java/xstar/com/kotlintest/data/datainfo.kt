@@ -18,7 +18,7 @@ data class IDInfo(val area: String, val sex: String, val birthday: String, val v
 //gank.io 类型文章
 data class GankData<out T>(val error: Boolean, val results: List<T>)
 
-data class GankArticle(val _id: String, val createdAt: String, val desc: String, val publishedAt: String, val source: String, val type: String, val url: String, val used: Boolean, val who: String, val images: List<String>)
+data class GankArticle(val _id: String, val createdAt: String, val desc: String, val publishedAt: String, val source: String, val type: String, val url: String, val used: Boolean, val who: String, val images: List<String>?)
 
 open class SimpleSubscribe<T> : Subscriber<T> {
     override fun onComplete() {
