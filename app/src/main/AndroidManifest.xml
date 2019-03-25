@@ -3,6 +3,9 @@
     package="xstar.com.kotlintest">
 
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.NFC" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -14,16 +17,21 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".GankMainActivity">
+        <activity android:name=".GankMainActivity" />
+        <activity android:name=".SearchActivity" />
+        <activity android:name=".ArticleActivity" />
+        <activity android:name=".ImageActivity" />
+        <activity android:name=".BluetoothActivity" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
-        <activity android:name=".ArticleActivity"></activity>
-        <activity android:name=".ImageActivity"></activity>
+        <activity android:name=".NFCActivity" />
+        <activity android:name=".PhotoActivity" />
     </application>
 
 </manifest>

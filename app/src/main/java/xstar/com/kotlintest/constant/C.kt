@@ -1,5 +1,10 @@
 package xstar.com.kotlintest.constant
 
+import android.content.Context
+import android.util.DisplayMetrics
+import android.view.WindowManager
+import org.jetbrains.anko.windowManager
+
 /**
  * @author xstar
  * @since 5/21/17.
@@ -16,4 +21,28 @@ object C {
     val GANK_TYPES = arrayOf("all", "福利", "Android", "iOS", "休息视频", "拓展资源", "前端", "瞎推荐", "App")
 
     val IMG_URL_KEY = "gank_img_path"
+    val GANK_TYPE_KEY = "gank_type_key"
+    val PERMISSION_REQUEST_CODE = 0x101
+
+
+    fun init(context: Context) {
+        val win = context.windowManager
+        val dm = DisplayMetrics()
+        win.defaultDisplay.getMetrics(dm)
+        SCREEN_W = dm.widthPixels
+        SCREEN_H = dm.heightPixels
+        DENSITY = dm.density
+        SCALE_DENSITY = dm.scaledDensity
+
+    }
+
+    var SCREEN_W = 0
+    var SCREEN_H = 0
+    var DENSITY = 0f
+    var SCALE_DENSITY = 0f
+
+    val PHOTO_TRANS_NONE = 0//无变换
+    val PHOTO_TRANS_GRAY = 1//灰度
+    val PHOTO_TRANS_SKETCH = 2//素描
+    val PHOTO_TRANS_PENCIL = 3//铅笔画
 }

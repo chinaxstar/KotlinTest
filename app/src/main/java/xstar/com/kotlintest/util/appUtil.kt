@@ -3,12 +3,19 @@ package xstar.com.kotlintest.util
 import android.app.Activity
 import android.content.ContentResolver
 import android.content.Context
+import android.content.pm.PackageManager
+import android.graphics.Color
 import android.net.Uri
 import android.os.Build
+import android.os.Bundle
 import android.provider.MediaStore
 import android.provider.Settings
 import android.view.View
 import android.view.WindowManager
+import androidx.appcompat.app.AppCompatActivity
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
+import org.jetbrains.anko.bluetoothManager
 import org.jetbrains.anko.wifiManager
 import java.io.File
 import java.io.IOException
@@ -16,7 +23,7 @@ import java.io.InputStreamReader
 import java.io.LineNumberReader
 import java.net.NetworkInterface
 
-object AppUtil{
+object AppUtil {
     fun getStatusBarHeight(context: Context): Int {
         var statusBarHeight = 0
         val res = context.resources
@@ -132,5 +139,40 @@ object AppUtil{
         val ip3 = int.and(0xFF0000).shr(16)
         val ip4 = int.shr(24).and(0xFF)
         return "$ip1.$ip2.$ip3.$ip4"
+    }
+
+}
+
+open class BaseActivity(var layout: Int = 0) : AppCompatActivity() {
+    private var compositeDisposable = CompositeDisposable()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        if (layout != 0) setContentView(layout)
+        //当FitsSystemWindows设置 true 时，会在屏幕最上方预留出状态栏高度的 padding
+        StatusBarUtil.setRootViewFitsSystemWindows(this, true)
+        //状态栏半透明
+        StatusBarUtil.setTranslucentStatus(this)
+
+        //使用深色状态栏图标
+        if (!StatusBarUtil.setStatusBarDarkTheme(this, true)) {
+            //若不支持深色图标 设置背景色为灰色
+            StatusBarUtil.setStatusBarColor(this, Color.GRAY)
+        }
+    }
+
+    fun addDispose(vararg disposable: Disposable) {
+        compositeDisposable.addAll(*disposable)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        compositeDisposable.dispose()
+    }
+
+    var permissionResult: ((String, Boolean) -> Unit)? = null
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        for (i in permissions.indices) {
+            permissionResult?.invoke(permissions[i], grantResults[i] == PackageManager.PERMISSION_GRANTED)
+        }
     }
 }

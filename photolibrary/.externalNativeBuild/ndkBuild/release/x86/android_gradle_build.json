@@ -1,0 +1,32 @@
+{
+  "buildFiles": [
+    "/Users/tzx/Documents/AndroidProj/github/KotlinTest/photolibrary/src/main/jni/Android.mk"
+  ],
+  "cleanCommands": [
+    "/Users/tzx/Library/Android/sdk/ndk-bundle/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/Users/tzx/Documents/AndroidProj/github/KotlinTest/photolibrary/src/main/jni/Android.mk APP_ABI\u003dx86 NDK_ALL_ABIS\u003dx86 NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-16 NDK_OUT\u003d/Users/tzx/Documents/AndroidProj/github/KotlinTest/photolibrary/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003d/Users/tzx/Documents/AndroidProj/github/KotlinTest/photolibrary/build/intermediates/ndkBuild/release/lib clean"
+  ],
+  "libraries": {
+    "hello-release-x86": {
+      "buildCommand": "/Users/tzx/Library/Android/sdk/ndk-bundle/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/Users/tzx/Documents/AndroidProj/github/KotlinTest/photolibrary/src/main/jni/Android.mk APP_ABI\u003dx86 NDK_ALL_ABIS\u003dx86 NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-16 NDK_OUT\u003d/Users/tzx/Documents/AndroidProj/github/KotlinTest/photolibrary/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003d/Users/tzx/Documents/AndroidProj/github/KotlinTest/photolibrary/build/intermediates/ndkBuild/release/lib /Users/tzx/Documents/AndroidProj/github/KotlinTest/photolibrary/build/intermediates/ndkBuild/release/obj/local/x86/libhello.so",
+      "toolchain": "toolchain-x86",
+      "abi": "x86",
+      "artifactName": "hello",
+      "files": [
+        {
+          "src": "/Users/tzx/Documents/AndroidProj/github/KotlinTest/photolibrary/src/main/jni/HelloC.c",
+          "flags": "-target i686-none-linux-android16 -fdata-sections -ffunction-sections -fstack-protector-strong -funwind-tables -no-canonical-prefixes --sysroot /Users/tzx/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -g -Wno-invalid-command-line-argument -Wno-unused-command-line-argument -fno-addrsig -fPIC -O2 -DNDEBUG -I/Users/tzx/Documents/AndroidProj/github/KotlinTest/photolibrary/src/main/jni -DANDROID -Wa,--noexecstack -Wformat -Werror\u003dformat-security -mstackrealign"
+        }
+      ],
+      "output": "/Users/tzx/Documents/AndroidProj/github/KotlinTest/photolibrary/build/intermediates/ndkBuild/release/obj/local/x86/libhello.so"
+    }
+  },
+  "toolchains": {
+    "toolchain-x86": {
+      "cCompilerExecutable": "/Users/tzx/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang"
+    }
+  },
+  "cFileExtensions": [
+    "c"
+  ],
+  "cppFileExtensions": []
+}

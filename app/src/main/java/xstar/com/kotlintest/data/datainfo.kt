@@ -1,5 +1,6 @@
 package xstar.com.kotlintest.data
 
+import android.app.Activity
 import org.reactivestreams.Subscriber
 import org.reactivestreams.Subscription
 
@@ -34,3 +35,7 @@ open class SimpleSubscribe<T> : Subscriber<T> {
     }
 
 }
+
+data class ModuleItem(val functionName: String, val turnTo: Class<*>, val iconId: Int?)
+
+data class PhotoTrans(val transName: String, val transCode: Int)

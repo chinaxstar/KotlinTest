@@ -3,8 +3,8 @@ package xstar.com.kotlintest.apis
 import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.functions.Consumer
 import io.reactivex.schedulers.Schedulers
 import okhttp3.*
 import org.reactivestreams.Subscriber
@@ -21,7 +21,7 @@ import xstar.com.kotlintest.data.JuHeRep
  * @author xstar
  * @since 5/21/17.
  */
-class HttpMethods {
+object HttpMethods {
 
     val gson: Gson = GsonBuilder().create()
     private val api = Retrofit.Builder().baseUrl("http://apis.juhe.cn/")
@@ -54,8 +54,8 @@ class HttpMethods {
         Log.e("headers", request.headers()?.toString())
     }
 
-    fun getGankTypeArticles(type: String = "all", page: Int = 1, subscriber: Subscriber<GankData<GankArticle>>) {
-        gankService.value?.gankAricles(type, page)!!.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe({ subscriber.onNext(it) })
+    fun getGankTypeArticles(type: String = "all", page: Int = 1): Flowable<GankData<GankArticle>> {
+        return gankService.value?.gankAricles(type, page)!!.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
     }
 
     fun findIDInfo(idNum: String, subscriber: Subscriber<JuHeRep<IDInfo>>) {

@@ -4,4 +4,5 @@
     <string name="search_text">搜索</string>
     <string name="author_name_label">作者：</string>
     <string name="publish_date_label">发布时间：</string>
+    <string name="os_version_tio_low_no_nfc">版本过低，不支持NFC功能</string>
 </resources>

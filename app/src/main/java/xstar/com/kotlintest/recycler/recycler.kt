@@ -99,61 +99,6 @@ open class HeaderFooterAdapter<M>(logic: HeaderFooterAdapter<M>.() -> Unit = {})
     }
 }
 
-//class BaseVH constructor(item: View) : RecyclerView.ViewHolder(item) {
-//    fun <T : View> find(resId: Int): T {
-//        return itemView.findViewById(resId) as T
-//    }
-//}
-//
-//open abstract class BaseAdapter<T> : RecyclerView.Adapter<BaseVH>() {
-//    var itemList: List<T>? = null
-//    var layout: Int? = 0
-//    var footLayout: Int? = 0
-//    var inflate: LayoutInflater? = null
-//    var hasFooter = false
-//    var hasHeader = false
-//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseVH {
-//        if (inflate == null) inflate = LayoutInflater.from(parent?.context)
-//        return BaseVH(inflate!!.inflate(viewType, parent, false))
-//    }
-//
-//    override fun onBindViewHolder(holder: BaseVH, position: Int) {
-//        if (hasFooter && position == itemCount - 1) {
-//            holder?.itemView?.setOnClickListener { onFootClickListener?.onItemClick(this, it, position) }
-//            onFootBind(holder, position)
-//        } else if (hasHeader && position == 0) {
-//            holder?.itemView?.setOnClickListener { onFootClickListener?.onItemClick(this, it, position) }
-//            onFootBind(holder, position)
-//        } else {
-//            holder?.itemView?.setOnClickListener { onItemClickListener?.onItemClick(this, it, position) }
-//            onBindView(holder, position)
-//        }
-//    }
-//
-//    open fun onFootBind(holder: BaseVH?, position: Int) {}
-//    abstract fun onBindView(holder: BaseVH?, position: Int)
-//
-//    override fun getItemCount(): Int {
-//        val size = itemList?.size ?: 0
-//        if (hasFooter) size.plus(1)
-//        return size
-//    }
-//
-//    var onItemClickListener: OnItemClickListener? = null
-//    var onFootClickListener: OnItemClickListener? = null
-//
-//    open interface OnItemClickListener {
-//        open fun onItemClick(adapter: RecyclerView.Adapter<BaseVH>, view: View, position: Int)
-//    }
-//
-//    override fun getItemViewType(position: Int): Int {
-//        var lay = layout
-//        if (hasFooter && footLayout != 0 && position == itemCount - 1) lay = footLayout
-//        return lay!!
-//    }
-//
-//}
-
 class GankAdapter : HeaderFooterAdapter<GankArticle>({
     itemLayout = R.layout.item_gank_article
     footerLayout = R.layout.item_footer_layout
@@ -190,7 +135,16 @@ class GankAdapter : HeaderFooterAdapter<GankArticle>({
 
 
     }
-})
+}) {
+    override fun getItemCount(): Int {
+        val size = datas?.size ?: 0
+        return when (size) {
+            0 -> 0
+            else -> if (itemLayout != 0) size + 1
+            else 0
+        }
+    }
+}
 
 class TypeAdapter : BaseAdapter<String>({
     itemLayout = R.layout.item_type_layout
