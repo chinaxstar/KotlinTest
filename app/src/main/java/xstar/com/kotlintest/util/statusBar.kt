@@ -30,8 +30,6 @@ import android.util.DisplayMetrics
 import android.util.TypedValue
 import android.view.*
 import android.widget.FrameLayout.LayoutParams
-import androidx.annotation.IntDef
-import java.lang.annotation.RetentionPolicy
 
 /**
  * Class to manage status and navigation bar tint effects when using KitKat

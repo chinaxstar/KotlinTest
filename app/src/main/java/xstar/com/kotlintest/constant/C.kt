@@ -23,6 +23,7 @@ object C {
     val IMG_URL_KEY = "gank_img_path"
     val GANK_TYPE_KEY = "gank_type_key"
     val PERMISSION_REQUEST_CODE = 0x101
+    val CAMERA_REQUEST_CODE = 0x102
 
 
     fun init(context: Context) {
