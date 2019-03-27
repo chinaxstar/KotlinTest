@@ -5,11 +5,11 @@ import android.graphics.Bitmap
 import android.os.Bundle
 import android.os.Handler
 import android.view.SurfaceHolder
-import android.view.SurfaceView
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.Result
 import kotlinx.android.synthetic.main.activity_scan.*
-import org.jetbrains.anko.find
+import org.jetbrains.anko.alert
+import org.jetbrains.anko.okButton
 import org.jetbrains.anko.toast
 import xstar.com.kotlintest.constant.C
 import xstar.com.kotlintest.util.BaseActivity
@@ -114,7 +114,13 @@ class ScannerActivity : BaseActivity(R.layout.activity_scan), SurfaceHolder.Call
         if (resultString.isNullOrEmpty()) {
             toast("扫码失败！")
         } else {
-            toast(resultString)
+            alert {
+                message = resultString
+                okButton {
+                    it.dismiss()
+                    handler?.obtainMessage(R.id.decode_failed)?.sendToTarget()
+                }
+            }.show()
         }
     }
 }

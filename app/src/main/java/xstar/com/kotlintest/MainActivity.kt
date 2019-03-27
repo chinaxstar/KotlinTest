@@ -1,5 +1,6 @@
 package xstar.com.kotlintest
 
+import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
@@ -22,6 +23,7 @@ import net.lucode.hackware.magicindicator.buildins.commonnavigator.abs.IPagerTit
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.model.PositionData
 import net.lucode.hackware.magicindicator.buildins.commonnavigator.titles.ColorTransitionPagerTitleView
 import org.jetbrains.anko.find
+import xstar.com.kotlintest.constant.C
 import xstar.com.kotlintest.data.ModuleItem
 import xstar.com.kotlintest.recycler.BaseAdapter
 import xstar.com.kotlintest.recycler.BaseVH
@@ -29,6 +31,7 @@ import xstar.com.kotlintest.recycler.OnItemClickListener
 import xstar.com.kotlintest.recycler.find
 import xstar.com.kotlintest.util.BaseActivity
 import xstar.com.kotlintest.util.BaseFragmentAdapter
+import xstar.com.kotlintest.util.begPermissions
 import xstar.com.kotlintest.util.dimen
 
 class MainActivity : BaseActivity(R.layout.functions) {
@@ -37,8 +40,16 @@ class MainActivity : BaseActivity(R.layout.functions) {
         datas = mutableListOf(GankFragment(), ToolBoxFragment(), AboutFragment())
     }
 
+    var savePermission = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        permissionResult = { s, b ->
+            savePermission = b
+        }
+
+        begPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE, C.PERMISSION_REQUEST_CODE,permissionResult!!)
+
         val commonNavigator = CommonNavigator(this)
         commonNavigator.adapter = object : CommonNavigatorAdapter() {
             override fun getTitleView(context: Context?, index: Int): IPagerTitleView {

@@ -1,6 +1,7 @@
 package xstar.com.kotlintest
 
 import android.Manifest
+import android.app.Activity
 import android.app.PendingIntent
 import android.content.Intent
 import android.content.IntentFilter
@@ -52,7 +53,7 @@ class NFCActivity : BaseActivity(R.layout.activity_nfc) {
             if (nfcAdapter != null) {
                 if (!nfcAdapter.isEnabled) {
                     val intent = Intent(Settings.ACTION_NFC_SETTINGS)
-                    startActivity(intent)
+                    startActivityForResult(intent, C.NFC_ENABLE_CODE)
                 }
             } else toast("您的设备不支持NFC")
         } else {
@@ -142,5 +143,12 @@ class NFCActivity : BaseActivity(R.layout.activity_nfc) {
                 .put(aid.size.toByte()) // Lc
                 .put(aid).put(0x00.toByte()) // Le
         return cmd_pse.array()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == C.NFC_ENABLE_CODE && resultCode != Activity.RESULT_OK) {
+            toast("NFC未开启！")
+            finish()
+        }
     }
 }

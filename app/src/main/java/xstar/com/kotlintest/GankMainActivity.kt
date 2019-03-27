@@ -124,8 +124,10 @@ class GankFragment : Fragment() {
             }
         }
 
-        refresh_srl?.isRefreshing = true
-        getData(gankType!!, pageNum)
+        if (!isVisible) {
+            refresh_srl?.isRefreshing = true
+            getData(gankType!!, pageNum)
+        }
         return view
     }
 

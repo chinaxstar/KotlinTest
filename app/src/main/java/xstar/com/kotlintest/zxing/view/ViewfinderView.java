@@ -112,6 +112,7 @@ public final class ViewfinderView extends View {
     private Collection<ResultPoint> lastPossibleResultPoints;
 
     boolean isFirst;
+    float scanTextLen = 0;
 
     public ViewfinderView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -121,6 +122,7 @@ public final class ViewfinderView extends View {
         ScreenRate = (int) (20 * density);
 
         paint = new Paint();
+        scanTextLen = getScanTextWidth();
         Resources resources = getResources();
         maskColor = resources.getColor(R.color.viewfinder_mask);
         resultColor = resources.getColor(R.color.result_view);
@@ -198,7 +200,8 @@ public final class ViewfinderView extends View {
             paint.setTextSize(TEXT_SIZE * density);
             paint.setAlpha(0x40);
             paint.setTypeface(Typeface.create("System", Typeface.BOLD));
-            canvas.drawText(getResources().getString(R.string.scan_text), frame.left, frame.bottom + (float) TEXT_PADDING_TOP * density, paint);
+
+            canvas.drawText(getResources().getString(R.string.scan_text), frame.left + (frame.width() - scanTextLen) / 2, frame.bottom + (float) TEXT_PADDING_TOP * density, paint);
 
 
             Collection<ResultPoint> currentPossible = possibleResultPoints;
@@ -230,6 +233,21 @@ public final class ViewfinderView extends View {
                     frame.right, frame.bottom);
 
         }
+    }
+
+    private float getScanTextWidth() {
+        paint.setColor(Color.WHITE);
+        paint.setTextSize(TEXT_SIZE * density);
+        paint.setAlpha(0x40);
+        paint.setTypeface(Typeface.create("System", Typeface.BOLD));
+        CharSequence s = getContext().getText(R.string.scan_text);
+        float[] floats = new float[s.length()];
+        paint.getTextWidths(s.toString(), floats);
+        float width = 0;
+        for (float f : floats) {
+            width += f;
+        }
+        return width;
     }
 
     public void drawViewfinder() {

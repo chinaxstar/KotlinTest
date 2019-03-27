@@ -2,6 +2,7 @@ package xstar.com.kotlintest
 
 import androidx.multidex.MultiDexApplication
 import com.bumptech.glide.Priority
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import xstar.com.kotlintest.constant.C
 
@@ -19,5 +20,6 @@ class MyApp : MultiDexApplication() {
 
     companion object {
         val DEFAULT_OPTIONS = RequestOptions().centerCrop().priority(Priority.NORMAL).skipMemoryCache(false)
+                .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
     }
 }

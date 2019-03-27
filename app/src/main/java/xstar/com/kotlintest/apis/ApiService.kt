@@ -20,6 +20,6 @@ interface ApiService {
 }
 
 interface GankApi {
-    @GET("/api/data/{type}/20/{page}")
+    @GET("/api/data/{type}/10/{page}")
     fun gankAricles(@Path("type") type: String, @Path("page") page: Int): Flowable<GankData<GankArticle>>
 }

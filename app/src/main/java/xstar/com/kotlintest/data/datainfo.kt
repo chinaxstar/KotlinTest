@@ -39,3 +39,10 @@ open class SimpleSubscribe<T> : Subscriber<T> {
 data class ModuleItem(val functionName: String, val turnTo: Class<*>, val iconId: Int?)
 
 data class PhotoTrans(val transName: String, val transCode: Int)
+
+/**
+ * 权限事件
+ */
+data class PermissionEvent(val permission: String)
+
+data class MsgEvent(val code: Int)

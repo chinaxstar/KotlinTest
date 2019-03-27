@@ -15,6 +15,7 @@ import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
+import org.greenrobot.eventbus.EventBus
 import org.jetbrains.anko.bluetoothManager
 import org.jetbrains.anko.wifiManager
 import java.io.File
@@ -158,6 +159,8 @@ open class BaseActivity(var layout: Int = 0) : AppCompatActivity() {
             //若不支持深色图标 设置背景色为灰色
             StatusBarUtil.setStatusBarColor(this, Color.GRAY)
         }
+
+//        EventBus.getDefault().register(this)
     }
 
     fun addDispose(vararg disposable: Disposable) {
@@ -167,6 +170,7 @@ open class BaseActivity(var layout: Int = 0) : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         compositeDisposable.dispose()
+//        EventBus.getDefault().unregister(this)
     }
 
     var permissionResult: ((String, Boolean) -> Unit)? = null
