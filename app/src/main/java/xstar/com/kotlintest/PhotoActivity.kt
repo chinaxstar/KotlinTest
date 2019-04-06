@@ -61,6 +61,7 @@ class PhotoActivity : BaseActivity(R.layout.activity_photo) {
         photoBitmap = BitmapFactory.decodeResource(resources, R.drawable.lam)
         main_photo.layoutParams.width = C.SCREEN_W
         main_photo.layoutParams.height = C.SCREEN_H
+        main_photo.setBitmap(photoBitmap!!)
         photo_transforms.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)//横向
         val tramsList = listOf(PhotoTrans("原图", 0), PhotoTrans("灰度", C.PHOTO_TRANS_GRAY)
                 , PhotoTrans("素描", C.PHOTO_TRANS_SKETCH), PhotoTrans("铅笔画", C.PHOTO_TRANS_PENCIL))

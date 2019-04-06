@@ -70,7 +70,6 @@ class BluetoothActivity : BaseActivity(R.layout.bluetooth_list) {
             bluetoothAdapter.startDiscovery()
         }
 
-        checkBluetoothState()
 
 
         blueAdapter.onItemLongClickListner = object : OnItemLongClickListener<BluetoothDevice> {
@@ -101,6 +100,9 @@ class BluetoothActivity : BaseActivity(R.layout.bluetooth_list) {
                 finish()
             }
         }
+
+        checkBluetoothState()
+
     }
 
 
