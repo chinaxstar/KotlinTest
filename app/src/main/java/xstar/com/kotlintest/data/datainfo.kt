@@ -46,3 +46,13 @@ data class PhotoTrans(val transName: String, val transCode: Int)
 data class PermissionEvent(val permission: String)
 
 data class MsgEvent(val code: Int)
+
+/**
+ * 位置信息
+ */
+data class PositionInfo(val latlong:Double,val latti:Double,val high:Double,val speed:Double,val time:Long)
+
+/**
+ * 纪念日
+ */
+data class ImportantDay(val time:Long,val description:String)

@@ -6,6 +6,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.PagerAdapter
+import org.jetbrains.anko.db.*
+import java.lang.reflect.Field
+import java.lang.reflect.ParameterizedType
 
 class BasePageAdapter<T>(init: () -> Unit) : PagerAdapter() {
 
@@ -61,4 +64,24 @@ class BaseFragmentAdapter(fm: FragmentManager, init: BaseFragmentAdapter.() -> U
     override fun getPageTitle(position: Int): CharSequence? {
         return titles?.get(position)
     }
+}
+
+class SimpleRawParse<T> : MapRowParser<T> {
+    override fun parseRow(columns: Map<String, Any?>): T {
+        val t = clzz.newInstance()
+        for (f in columnSet) {
+            if (columns.containsKey(f.name)) {
+                f.set(t, columns[f.name])
+            }
+        }
+        return t
+    }
+
+    val clzz:Class<T> = (javaClass as ParameterizedType).actualTypeArguments[0] as Class<T>
+    val columnSet = hashSetOf<Field>()
+
+    init {
+        columnSet.addAll(clzz.declaredFields)
+    }
+
 }

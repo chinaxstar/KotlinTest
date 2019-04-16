@@ -17,7 +17,9 @@ import androidx.fragment.app.Fragment
 import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import org.jetbrains.anko.db.ManagedSQLiteOpenHelper
 import org.jetbrains.anko.dimen
+import xstar.com.kotlintest.MyApp
 import java.math.BigDecimal
 import java.math.RoundingMode
 import java.text.SimpleDateFormat
@@ -30,6 +32,11 @@ fun Context.getVersionName(): String? {
 
 fun Context.getVersionCode(): Int {
     return packageManager.getPackageInfo(packageName, 0)?.versionCode ?: 0
+}
+
+fun Context.getDBHelper(): ManagedSQLiteOpenHelper? {
+    return if (this is MyApp) this.dbHelper
+    else null
 }
 
 fun Fragment.dimen(@DimenRes id: Int): Int {

@@ -64,10 +64,13 @@ class ScannerActivity : BaseActivity(R.layout.activity_scan), SurfaceHolder.Call
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        CameraManager.init(this)
+        inactivityTimer = InactivityTimer(this)
         permissionResult = { s, b ->
             if (!b) finish() else {
-                inactivityTimer = InactivityTimer(this)
-                CameraManager.init(this)
+                initCamera(scanner_screen.holder)
+                scanner_screen.holder.addCallback(this@ScannerActivity)
+                floating_layer.drawViewfinder()
             }
         }
         begPermissions(Manifest.permission.CAMERA, requestCode = C.CAMERA_REQUEST_CODE, result = permissionResult!!)
@@ -105,7 +108,7 @@ class ScannerActivity : BaseActivity(R.layout.activity_scan), SurfaceHolder.Call
     override fun onPause() {
         super.onPause()
         handler?.quitSynchronously()
-        CameraManager.get().closeDriver()
+        CameraManager.get()?.closeDriver()
     }
 
     override fun handleDecode(result: Result, barcode: Bitmap) {

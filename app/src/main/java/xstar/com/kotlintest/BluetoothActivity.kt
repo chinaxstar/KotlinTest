@@ -1,6 +1,7 @@
 package xstar.com.kotlintest
 
 import android.Manifest
+import android.app.Activity
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothSocket
@@ -10,6 +11,7 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.graphics.Rect
 import android.os.Bundle
+import android.provider.Settings
 import android.util.Log
 import android.view.View
 import android.widget.TextView
@@ -18,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.bluetooth_list.*
 import org.jetbrains.anko.dimen
 import org.jetbrains.anko.toast
+import xstar.com.kotlintest.constant.C
 import xstar.com.kotlintest.recycler.BaseAdapter
 import xstar.com.kotlintest.recycler.BaseVH
 import xstar.com.kotlintest.recycler.OnItemLongClickListener
@@ -91,7 +94,8 @@ class BluetoothActivity : BaseActivity(R.layout.bluetooth_list) {
             if (s == Manifest.permission.BLUETOOTH && b) {
                 bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
                 if (bluetoothAdapter.state == BluetoothAdapter.STATE_OFF) {
-                    bluetoothAdapter.enable()
+                    val intent = Intent(Settings.ACTION_BLUETOOTH_SETTINGS)
+                    startActivityForResult(intent, C.BLUETOOTH_ENABLE_CODE)
                 }
                 bluetoothAdapter.startDiscovery()
                 swipe.isRefreshing = true
@@ -146,6 +150,15 @@ class BluetoothActivity : BaseActivity(R.layout.bluetooth_list) {
 
         }
 
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if(requestCode==C.BLUETOOTH_ENABLE_CODE){
+            if(!bluetoothAdapter.isEnabled){
+                toast("蓝牙未打开！")
+                finish()
+            }else checkBluetoothState()
+        }
     }
 
     override fun onBackPressed() {

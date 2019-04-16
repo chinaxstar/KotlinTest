@@ -23,10 +23,10 @@ android {
 
     signingConfigs {
         release {
-//            storeFile file("../tzx_app.jks")
-//            storePassword "tzx.com"
-//            keyAlias "tzxapp"
-//            keyPassword "tzx.com"
+            storeFile file("../xstar.jks")
+            storePassword "dzjjtx"
+            keyAlias "xstar"
+            keyPassword "dzjjtx"
         }
     }
 
@@ -70,7 +70,7 @@ android {
     applicationVariants.all { variant ->
         variant.outputs.all { output ->
 //            if (output.outputFile.name.contains("release")) {
-                outputFileName = "BOH快餐_${variant.versionName}_${variant.name}_${new SimpleDateFormat("yyyy_MM_dd").format(new Date())}.apk"
+                outputFileName = "Android可以做那些事_${variant.versionName}_${variant.name}_${new SimpleDateFormat("yyyy_MM_dd").format(new Date())}.apk"
 //            }
         }
     }

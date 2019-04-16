@@ -72,7 +72,8 @@ class CaptureActivityHandler(act: ScanInterface, decodeFormats: Vector<BarcodeFo
                 val bundle = message.data
 
                 /** */
-                val barcode = bundle?.getParcelable<Bitmap>(DecodeThread.BARCODE_BITMAP)//閿熸枻鎷烽敓鐭唻鎷烽敓鏂ゆ嫹閿熺绛规嫹
+                val barcode = bundle?.getParcelable<Bitmap>(DecodeThread.BARCODE_BITMAP)
+                //閿熸枻鎷烽敓鐭唻鎷烽敓鏂ゆ嫹閿熺绛规嫹
 
                 activity.handleDecode(message.obj as Result, barcode!!)//閿熸枻鎷烽敓鎴枻鎷烽敓?        /***********************************************************************/
             }

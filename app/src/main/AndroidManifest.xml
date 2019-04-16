@@ -34,6 +34,7 @@
         <activity android:name=".NFCActivity" />
         <activity android:name=".PhotoActivity" />
         <activity android:name=".ScannerActivity" />
+        <activity android:name=".ImportantDayActivity" />
     </application>
 
 </manifest>

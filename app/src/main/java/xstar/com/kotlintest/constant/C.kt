@@ -25,6 +25,7 @@ object C {
     val PERMISSION_REQUEST_CODE = 0x101
     val CAMERA_REQUEST_CODE = 0x102
     val NFC_ENABLE_CODE = 0X103
+    val BLUETOOTH_ENABLE_CODE=0x104
 
     fun init(context: Context) {
         val win = context.windowManager
@@ -46,5 +47,6 @@ object C {
     val PHOTO_TRANS_GRAY = 1//灰度
     val PHOTO_TRANS_SKETCH = 2//素描
     val PHOTO_TRANS_PENCIL = 3//铅笔画
+
 
 }
