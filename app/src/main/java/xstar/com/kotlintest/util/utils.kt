@@ -9,6 +9,7 @@ import androidx.viewpager.widget.PagerAdapter
 import org.jetbrains.anko.db.*
 import java.lang.reflect.Field
 import java.lang.reflect.ParameterizedType
+import java.lang.reflect.TypeVariable
 
 class BasePageAdapter<T>(init: () -> Unit) : PagerAdapter() {
 
@@ -66,7 +67,8 @@ class BaseFragmentAdapter(fm: FragmentManager, init: BaseFragmentAdapter.() -> U
     }
 }
 
-class SimpleRawParse<T> : MapRowParser<T> {
+class SimpleRawParse<T> constructor(clazz: Class<T>) : MapRowParser<T> {
+    val clzz = clazz
     override fun parseRow(columns: Map<String, Any?>): T {
         val t = clzz.newInstance()
         for (f in columnSet) {
@@ -77,11 +79,21 @@ class SimpleRawParse<T> : MapRowParser<T> {
         return t
     }
 
-    val clzz:Class<T> = (javaClass as ParameterizedType).actualTypeArguments[0] as Class<T>
+
     val columnSet = hashSetOf<Field>()
 
     init {
         columnSet.addAll(clzz.declaredFields)
     }
 
+}
+
+fun getObjColumns(any:Any):Array<Pair<String,*>>{
+    val fields=any.javaClass.declaredFields
+    val muList= mutableListOf<Pair<String,*>>()
+    for (f in fields){
+        f.isAccessible=true
+        muList.add(f.name to f.get(any))
+    }
+    return muList.toTypedArray()
 }

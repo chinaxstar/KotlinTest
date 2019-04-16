@@ -51,6 +51,7 @@ class BluetoothActivity : BaseActivity(R.layout.bluetooth_list) {
             deviceName.text = item.name
             deviceType.text = item.bluetoothClass.majorDeviceClassString()
             deviceMac.text = item.address
+            v.itemView.setOnClickListener { onItemLongClickListner?.onItemLongClick(v,p,item) }
         }
     }
 

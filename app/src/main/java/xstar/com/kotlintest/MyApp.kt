@@ -7,6 +7,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import org.jetbrains.anko.db.*
 import xstar.com.kotlintest.constant.C
+import xstar.com.kotlintest.data.ImportantDay
 import xstar.com.kotlintest.data.PositionInfo
 
 /**
@@ -19,7 +20,7 @@ class MyApp : MultiDexApplication() {
     override fun onCreate() {
         super.onCreate()
         C.init(this)
-        dbHelper.use {  }
+        dbHelper.use { }
     }
 
     companion object {
@@ -30,12 +31,16 @@ class MyApp : MultiDexApplication() {
 
     val dbHelper = object : ManagedSQLiteOpenHelper(this, "base.db", null, 1) {
         override fun onCreate(db: SQLiteDatabase?) {
-            db?.createTable(PositionInfo::class.java.simpleName,false,
-            "latlong" to REAL,
-            "latti" to REAL,
-            "high" to REAL,
-            "speed" to REAL,
-            "time" to INTEGER
+            db?.createTable(PositionInfo::class.java.simpleName, false,
+                    "latlong" to REAL,
+                    "latti" to REAL,
+                    "high" to REAL,
+                    "speed" to REAL,
+                    "time" to INTEGER
+            )
+            db?.createTable(ImportantDay::class.java.simpleName, false,
+                    "time" to INTEGER,
+                    "description" to TEXT
             )
         }
 

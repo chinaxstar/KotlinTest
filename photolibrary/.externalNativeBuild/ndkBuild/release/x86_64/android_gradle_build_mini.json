@@ -1,16 +1,16 @@
 {
   "buildFiles": [
-    "/Users/tzx/Documents/AndroidProj/github/KotlinTest/photolibrary/src/main/jni/Android.mk"
+    "D:\\StudioProjects\\KotlinTest\\photolibrary\\src\\main\\jni\\Android.mk"
   ],
   "cleanCommands": [
-    "/Users/tzx/Library/Android/sdk/ndk-bundle/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/Users/tzx/Documents/AndroidProj/github/KotlinTest/photolibrary/src/main/jni/Android.mk APP_ABI\u003dx86_64 NDK_ALL_ABIS\u003dx86_64 NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-16 NDK_OUT\u003d/Users/tzx/Documents/AndroidProj/github/KotlinTest/photolibrary/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003d/Users/tzx/Documents/AndroidProj/github/KotlinTest/photolibrary/build/intermediates/ndkBuild/release/lib clean"
+    "C:\\Users\\pc\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\ndk-build.cmd NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003dD:\\StudioProjects\\KotlinTest\\photolibrary\\src\\main\\jni\\Android.mk APP_ABI\u003dx86_64 NDK_ALL_ABIS\u003dx86_64 NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-16 NDK_OUT\u003dD:/StudioProjects/KotlinTest/photolibrary/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003dD:\\StudioProjects\\KotlinTest\\photolibrary\\build\\intermediates\\ndkBuild\\release\\lib clean"
   ],
   "libraries": {
     "hello-release-x86_64": {
       "artifactName": "hello",
-      "buildCommand": "/Users/tzx/Library/Android/sdk/ndk-bundle/ndk-build NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003d/Users/tzx/Documents/AndroidProj/github/KotlinTest/photolibrary/src/main/jni/Android.mk APP_ABI\u003dx86_64 NDK_ALL_ABIS\u003dx86_64 NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-16 NDK_OUT\u003d/Users/tzx/Documents/AndroidProj/github/KotlinTest/photolibrary/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003d/Users/tzx/Documents/AndroidProj/github/KotlinTest/photolibrary/build/intermediates/ndkBuild/release/lib /Users/tzx/Documents/AndroidProj/github/KotlinTest/photolibrary/build/intermediates/ndkBuild/release/obj/local/x86_64/libhello.so",
+      "buildCommand": "C:\\Users\\pc\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\ndk-build.cmd NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003dD:\\StudioProjects\\KotlinTest\\photolibrary\\src\\main\\jni\\Android.mk APP_ABI\u003dx86_64 NDK_ALL_ABIS\u003dx86_64 NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-16 NDK_OUT\u003dD:/StudioProjects/KotlinTest/photolibrary/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003dD:\\StudioProjects\\KotlinTest\\photolibrary\\build\\intermediates\\ndkBuild\\release\\lib D:/StudioProjects/KotlinTest/photolibrary/build/intermediates/ndkBuild/release/obj/local/x86_64/libhello.so",
       "abi": "x86_64",
-      "output": "/Users/tzx/Documents/AndroidProj/github/KotlinTest/photolibrary/build/intermediates/ndkBuild/release/obj/local/x86_64/libhello.so"
+      "output": "D:\\StudioProjects\\KotlinTest\\photolibrary\\build\\intermediates\\ndkBuild\\release\\obj\\local\\x86_64\\libhello.so"
     }
   }
 }

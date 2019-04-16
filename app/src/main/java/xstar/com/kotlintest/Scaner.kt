@@ -68,7 +68,7 @@ class ScannerActivity : BaseActivity(R.layout.activity_scan), SurfaceHolder.Call
         inactivityTimer = InactivityTimer(this)
         permissionResult = { s, b ->
             if (!b) finish() else {
-                initCamera(scanner_screen.holder)
+//                initCamera(scanner_screen.holder)
                 scanner_screen.holder.addCallback(this@ScannerActivity)
                 floating_layer.drawViewfinder()
             }

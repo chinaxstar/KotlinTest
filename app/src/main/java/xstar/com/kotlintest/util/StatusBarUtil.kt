@@ -75,7 +75,7 @@ object StatusBarUtil {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             val winContent = activity.findViewById<View>(android.R.id.content) as ViewGroup
             if (winContent.childCount > 0) {
-                val rootView = winContent.getChildAt(0) as ViewGroup
+                val rootView = winContent.getChildAt(0)
                 if (rootView != null) {
                     rootView.fitsSystemWindows = fitSystemWindows
                 }

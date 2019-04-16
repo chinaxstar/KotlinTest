@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/titleStr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="标题"
+        android:textSize="@dimen/item_title_main"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/title"
+        android:padding="@dimen/dp_5"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:textSize="@dimen/item_info"
+        app:layout_constraintBaseline_toBaselineOf="@id/titleStr"
+        app:layout_constraintLeft_toRightOf="@id/titleStr"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_goneMarginLeft="@dimen/dp_10" />
+
+    <TextView
+        android:id="@+id/dateStr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_5"
+        android:text="时间"
+        android:textSize="@dimen/item_title_main"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:padding="@dimen/dp_5"
+        app:layout_constraintRight_toLeftOf="@id/date"
+        app:layout_constraintTop_toBottomOf="@id/titleStr"
+        app:layout_goneMarginTop="@dimen/dp_20" />
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_5"
+        android:textSize="@dimen/item_info"
+        android:background="@null"
+        app:layout_constraintBaseline_toBaselineOf="@id/dateStr"
+        app:layout_constraintLeft_toRightOf="@id/dateStr"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_goneMarginLeft="@dimen/dp_10" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

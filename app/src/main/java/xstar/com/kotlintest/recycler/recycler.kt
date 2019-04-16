@@ -85,34 +85,32 @@ open class HeaderFooterAdapter<M>(logic: HeaderFooterAdapter<M>.() -> Unit = {})
     init {
         logic()
         viewType = { p ->
-            if (p == 0 && headerLayout != 0) headerLayout
-            else if (p == itemCount - 1 && footerLayout != 0) footerLayout
+            if (useHeader&&p==0) headerLayout
+            else if ( useFooter&&p == itemCount - 1) footerLayout
             else itemLayout
         }
     }
 
+    var moreAdd=0
+    var useFooter=false
+    var useHeader=false
     override fun getItemCount(): Int {
-        var size = datas?.size ?: 0
-        if (headerLayout != 0) size += 1
-        if (footerLayout != 0) size += 1
-        return size
+        val size = datas?.size ?: 0
+        if (useHeader) moreAdd += 1
+        if (useFooter) moreAdd += 1
+        return size+moreAdd
     }
 }
 
 class GankAdapter : HeaderFooterAdapter<GankArticle>({
     itemLayout = R.layout.item_gank_article
     footerLayout = R.layout.item_footer_layout
+    useFooter=true
     val options = MyApp.DEFAULT_OPTIONS
     val tranOption = DrawableTransitionOptions().crossFade(450)
     bindData = { h, p ->
-
-        if (footerLayout != 0 && p == itemCount - 1) {
-            h.itemView.setOnClickListener {
-                onItemClickListner?.onItemClick(h, p,
-                        GankArticle("", "", "", "", "", "", "", false, "", ArrayList()))
-            }
-        } else if (headerLayout != 0 && p == 0) {
-            h.itemView.setOnClickListener {
+        if (useFooter && p == itemCount - 1) {
+            RxView.onClick(h.itemView).subscribe {
                 onItemClickListner?.onItemClick(h, p,
                         GankArticle("", "", "", "", "", "", "", false, "", ArrayList()))
             }

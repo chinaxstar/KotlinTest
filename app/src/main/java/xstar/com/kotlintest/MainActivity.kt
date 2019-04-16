@@ -115,7 +115,7 @@ class ToolBoxFragment : Fragment() {
         }
         adapter.datas = arrayListOf(ModuleItem("GANK集中营", GankMainActivity::class.java, null)
                 , ModuleItem("蓝牙", BluetoothActivity::class.java, null)
-                , ModuleItem("搜索", SearchActivity::class.java, null)
+                , ModuleItem("纪念日", ImportantDayActivity::class.java, null)
                 , ModuleItem("NFC", NFCActivity::class.java, null)
                 , ModuleItem("图片", PhotoActivity::class.java, null)
                 , ModuleItem("扫码", ScannerActivity::class.java, null)

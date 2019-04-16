@@ -123,14 +123,17 @@ class GankFragment : Fragment() {
                 }
             }
         }
-
-        if (!isVisible) {
-            refresh_srl?.isRefreshing = true
-            getData(gankType!!, pageNum)
-        }
         return view
     }
-
+    var first=true
+    override fun onResume() {
+        super.onResume()
+        if(first){
+            refresh_srl?.isRefreshing = true
+            getData(gankType!!, pageNum)
+            first=false
+        }
+    }
 
     fun getData(type: String, pageNum: Int) {
         val disp = HttpMethods.getGankTypeArticles(type = type, page = pageNum).subscribe({ t ->
