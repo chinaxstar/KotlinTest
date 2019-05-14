@@ -44,11 +44,11 @@ class MainActivity : BaseActivity(R.layout.functions) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        permissionResult = { s, b ->
+        permissionResult = { _, b ->
             savePermission = b
         }
 
-        begPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE, C.PERMISSION_REQUEST_CODE,permissionResult!!)
+        begPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE, C.PERMISSION_REQUEST_CODE, permissionResult!!)
 
         val commonNavigator = CommonNavigator(this)
         commonNavigator.adapter = object : CommonNavigatorAdapter() {
@@ -57,6 +57,7 @@ class MainActivity : BaseActivity(R.layout.functions) {
                 colorTransiton.normalColor = Color.BLACK
                 colorTransiton.selectedColor = Color.BLUE
                 colorTransiton.text = titles[index]
+                colorTransiton.width = C.SCREEN_W / count
                 colorTransiton.setOnClickListener {
                     mainPages.currentItem = index
                 }
@@ -115,6 +116,7 @@ class ToolBoxFragment : Fragment() {
         }
         adapter.datas = arrayListOf(ModuleItem("GANK集中营", GankMainActivity::class.java, null)
                 , ModuleItem("蓝牙", BluetoothActivity::class.java, null)
+                , ModuleItem("图片", PhotoActivity::class.java, null)
                 , ModuleItem("纪念日", ImportantDayActivity::class.java, null)
                 , ModuleItem("NFC", NFCActivity::class.java, null)
                 , ModuleItem("图片", PhotoActivity::class.java, null)

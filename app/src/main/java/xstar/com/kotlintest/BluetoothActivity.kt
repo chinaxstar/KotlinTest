@@ -35,7 +35,7 @@ class BluetoothActivity : BaseActivity(R.layout.bluetooth_list) {
 
 
     val BLUETOOTH_PERMISSION_CODE = 0x100
-    val SSP_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB")
+    val SSP_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB")!!
 
     lateinit var bluetoothAdapter: BluetoothAdapter
     var bluetoothSocket: BluetoothSocket? = null

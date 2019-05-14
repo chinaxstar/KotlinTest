@@ -73,6 +73,7 @@ class SimpleRawParse<T> constructor(clazz: Class<T>) : MapRowParser<T> {
         val t = clzz.newInstance()
         for (f in columnSet) {
             if (columns.containsKey(f.name)) {
+                f.isAccessible = true
                 f.set(t, columns[f.name])
             }
         }
@@ -83,17 +84,32 @@ class SimpleRawParse<T> constructor(clazz: Class<T>) : MapRowParser<T> {
     val columnSet = hashSetOf<Field>()
 
     init {
-        columnSet.addAll(clzz.declaredFields)
+        for (f in clzz.declaredFields) {
+            columnSet.add(f)
+        }
     }
 
 }
 
-fun getObjColumns(any:Any):Array<Pair<String,*>>{
-    val fields=any.javaClass.declaredFields
-    val muList= mutableListOf<Pair<String,*>>()
-    for (f in fields){
-        f.isAccessible=true
+fun getObjColumnsAndValue(any: Any): Array<Pair<String, *>> {
+    val fieldSet =getObjFields(any.javaClass)
+    val muList = mutableListOf<Pair<String, *>>()
+    for (f in fieldSet) {
+        f.isAccessible = true
         muList.add(f.name to f.get(any))
     }
     return muList.toTypedArray()
+}
+
+fun getObjColumnNames(clzz: Class<*>): Array<String> {
+    val fieldSet = getObjFields(clzz)
+    return fieldSet.map { it.name }.toTypedArray()
+}
+
+fun getObjFields(clzz: Class<*>): Set<Field> {
+    val fieldSet = hashSetOf<Field>(*clzz.declaredFields)
+    for (f in clzz.fields) {
+        fieldSet.remove(f)
+    }
+    return fieldSet
 }

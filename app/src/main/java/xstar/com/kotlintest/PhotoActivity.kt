@@ -64,7 +64,8 @@ class PhotoActivity : BaseActivity(R.layout.activity_photo) {
         main_photo.setBitmap(photoBitmap!!)
         photo_transforms.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)//横向
         val tramsList = listOf(PhotoTrans("原图", 0), PhotoTrans("灰度", C.PHOTO_TRANS_GRAY)
-                , PhotoTrans("素描", C.PHOTO_TRANS_SKETCH), PhotoTrans("铅笔画", C.PHOTO_TRANS_PENCIL))
+                , PhotoTrans("素描", C.PHOTO_TRANS_SKETCH), PhotoTrans("铅笔画", C.PHOTO_TRANS_PENCIL)
+                , PhotoTrans("字符图", C.PHOTO_TRANS_CHARS))
         imgAdaper = ImgAdapter()
         imgAdaper?.bitmap = photoBitmap
         imgAdaper?.datas = tramsList.toMutableList()
@@ -109,19 +110,20 @@ class PhotoActivity : BaseActivity(R.layout.activity_photo) {
             holder.find<ImageView>(R.id.img).layoutParams?.height = imgW
             val trans = datas?.get(position)
             trans?.let {
-                val mapDisp = Flowable.just(it.transCode).map { it ->
+                val mapDisp = Flowable.just(it.transCode).map {
                     bitmap?.let { b ->
                         synchronized(b) {
                             return@map when (it) {
                                 C.PHOTO_TRANS_GRAY -> b.gray()
                                 C.PHOTO_TRANS_SKETCH -> b.sketch(2)
                                 C.PHOTO_TRANS_PENCIL -> b.pencil(30)
+                                C.PHOTO_TRANS_CHARS -> getCharsPicture(b)
                                 else ->
                                     b
                             }
                         }
                     }
-                }.observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.io())
+                }.observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.computation())
                         .subscribe {
                             holder.find<ImageView>(R.id.img).imageBitmap = it
                         }
@@ -129,7 +131,7 @@ class PhotoActivity : BaseActivity(R.layout.activity_photo) {
                 if (context is BaseActivity) {
                     context.addDispose(mapDisp)
                 }
-                holder?.find<TextView>(R.id.name)?.text = it.transName
+                holder.find<TextView>(R.id.name).text = it.transName
                 holder.itemView.setOnClickListener { onItemClickListner?.onItemClick(holder, position, datas!![position]) }
             }
         }

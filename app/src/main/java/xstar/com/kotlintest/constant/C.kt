@@ -47,6 +47,8 @@ object C {
     val PHOTO_TRANS_GRAY = 1//灰度
     val PHOTO_TRANS_SKETCH = 2//素描
     val PHOTO_TRANS_PENCIL = 3//铅笔画
+    val PHOTO_TRANS_CHARS = 5//字符图
 
 
+    val IMAGE_CHARS = "\$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\\\"^`'. "
 }

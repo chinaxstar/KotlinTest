@@ -1,12 +1,14 @@
 package xstar.com.kotlintest.util
 
 import android.app.Activity
-import android.graphics.Bitmap
-import android.graphics.Color
-import android.graphics.Rect
+import android.content.Context
+import android.graphics.*
+import android.graphics.drawable.BitmapDrawable
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import top.xstar.photolibrary.HelloC
+import xstar.com.kotlintest.constant.C.IMAGE_CHARS
 
 /**
  * @author: xstar
@@ -72,7 +74,7 @@ fun Bitmap.pencil(threshold: Int = 18): Bitmap {
         area[5] = newPixels[width * (h + 1) + w - 1]
         area[6] = newPixels[width * (h + 1) + w]
         area[7] = newPixels[width * (h + 1) + w + 1]
-        argb = ARGB(newPixels[index])
+        argb = toARGB(newPixels[index])
         if (argb[0] != 0 && checkDiff2(sumARGB(area), argb, _threshold))
             pixels[index] = black.or(argb[0].shl(24))
         else
@@ -101,7 +103,7 @@ fun sumARGB(colors: IntArray): IntArray {
     return argb
 }
 
-fun ARGB(color: Int): IntArray {
+fun toARGB(color: Int): IntArray {
     val argb = IntArray(4)
     argb[0] = color.shr(24)//A
     argb[1] = color.shr(16).and(0xff)//R
@@ -171,12 +173,46 @@ fun choiceAlogrithm(i: Int, mode: String = "WEIGHT"): Int {
     return gray
 }
 
+fun getCharsPicture(bitmap: Bitmap): Bitmap {
+    val newBitmap = Bitmap.createScaledBitmap(bitmap, bitmap.width shr 3, bitmap.height shr 3, true)
+    val w = newBitmap.width
+    val h = newBitmap.height
+    val colors = IntArray(w * h)
+    newBitmap.getPixels(colors, 0, w, 0, 0, w, h)
+
+    val paint = Paint()
+    paint.alpha = 255
+    paint.textSize = 20f
+    paint.color = Color.GRAY
+    val rect = Rect()
+    paint.getTextBounds("a", 0, 1, rect)
+    val textW = rect.width()
+    val textH = rect.height()
+    val bitmap = Bitmap.createBitmap(textW * w, textH * h, Bitmap.Config.RGB_565)
+    val canvas = Canvas(bitmap)
+    canvas.drawColor(Color.WHITE)
+    var char: Char
+    for (i in 0 until h) {
+        for (j in 0 until w) {
+            char = grayToChar(colors[i * w + j])
+            canvas.drawText(char.toString(), textW * j.toFloat(), textH * i.toFloat(), paint)
+        }
+    }
+    return bitmap
+}
+
+fun grayToChar(color: Int): Char {
+    val unit = 255.0 / IMAGE_CHARS.length
+    return IMAGE_CHARS[(choiceAlogrithm(color) / unit).toInt()]
+}
+
 
 object GrayAlogrithmType {
     var Weight = "WEIGHT"
     var Average = "AVERAGE"
     var Maximum = "MAXIMUM"
 }
+
 
 object Bug54971Workaround {
     fun assitActivity(activity: Activity) {

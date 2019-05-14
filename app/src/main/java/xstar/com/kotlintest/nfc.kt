@@ -69,7 +69,7 @@ class NFCActivity : BaseActivity(R.layout.activity_nfc) {
             for (i in tagFromIntent.techList) {
                 Log.e("NFC", "tech=$i")
             }
-            val DFN_SRV = byteArrayOf(0xA0.toByte(), 0x00,
+            val dfn_srv = byteArrayOf(0xA0.toByte(), 0x00,
                     0x00, 0x00, 0x03, 0x86.toByte(), 0x98.toByte(),
                     0x07, 0x01)
 //            val DFN_SRV = ByteArray(20)
@@ -82,32 +82,32 @@ class NFCActivity : BaseActivity(R.layout.activity_nfc) {
                     val sys = "1PAY.SYS.DDF01".toByteArray()
                     var back = isoDep.transceive(getSelectCommand(sys))
                     nfc_message.append("选择支付系统：${back.joinToString(separator = " ") { b -> b.toString(16).toUpperCase() }} \n")
-                    back = isoDep.transceive(getSelectCommand(DFN_SRV))
+                    back = isoDep.transceive(getSelectCommand(dfn_srv))
                     nfc_message.append("选择公交卡应用的名称：${back.joinToString(separator = " ") { b -> b.toString(16).toUpperCase() }} \n")
-                    val ReadMoney = byteArrayOf(0x80.toByte(), // CLA Class
+                    val readMoney = byteArrayOf(0x80.toByte(), // CLA Class
                             0x5C.toByte(), // INS Instruction
                             0x00.toByte(), // P1 Parameter 1
                             0x02.toByte(), // P2 Parameter 2
                             0x04.toByte())// Le
-                    val Money = isoDep.transceive(ReadMoney)
-                    if (Money != null && Money.size > 4) {
-                        val cash = byteToInt(Money, 4)
+                    val money = isoDep.transceive(readMoney)
+                    if (money != null && money.size > 4) {
+                        val cash = byteToInt(money, 4)
                         val ba = cash / 100.0f
                         Log.e("money", cash.toString())
                     }
                     nfc_message.append("余额：${back.joinToString(separator = " ") { b -> b.toString(16).toUpperCase() }} \n")
-                    val ReadRecord = byteArrayOf(0x00.toByte(), // CLA Class
+                    val readRecord = byteArrayOf(0x00.toByte(), // CLA Class
                             0xB2.toByte(), // INS Instruction
                             0x01.toByte(), // P1 Parameter 1
                             0xC5.toByte(), // P2 Parameter 2
                             0x00.toByte())// Le
-                    back = isoDep.transceive(ReadRecord)
+                    back = isoDep.transceive(readRecord)
                     nfc_message.append("交易记录：${back.joinToString(separator = " ") { b -> b.toString(16).toUpperCase() }} \n")
                 }
             } catch (e: Exception) {
                 e.printStackTrace()
             } finally {
-                isoDep.close()
+                isoDep?.close()
             }
 
         }
@@ -135,14 +135,14 @@ class NFCActivity : BaseActivity(R.layout.activity_nfc) {
     }
 
     private fun getSelectCommand(aid: ByteArray): ByteArray {
-        val cmd_pse = ByteBuffer.allocate(aid.size + 6)
-        cmd_pse.put(0x00.toByte()) // CLA Class
+        val cmdOse = ByteBuffer.allocate(aid.size + 6)
+        cmdOse.put(0x00.toByte()) // CLA Class
                 .put(0xA4.toByte()) // INS Instruction
                 .put(0x04.toByte()) // P1 Parameter 1
                 .put(0x00.toByte()) // P2 Parameter 2
                 .put(aid.size.toByte()) // Lc
                 .put(aid).put(0x00.toByte()) // Le
-        return cmd_pse.array()
+        return cmdOse.array()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

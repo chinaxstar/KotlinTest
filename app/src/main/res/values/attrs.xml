@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="PhotoView">
-        <attr name="photo" format="reference"/>
+        <attr name="photo" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="DatePickerGroup">
+        <!--显示的数据条数-->
+        <attr name="showItemNumber" format="integer" />
+        <attr name="textSize" format="dimension" />
+        <attr name="textColor" format="dimension" />
+        <attr name="itemPaddingLeftAndRight" format="dimension" />
+        <attr name="itemPaddingTopBottom" format="dimension" />
     </declare-styleable>
 </resources>
