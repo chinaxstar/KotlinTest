@@ -1,28 +1,28 @@
 {
   "buildFiles": [
-    "D:\\StudioProjects\\KotlinTest\\photolibrary\\src\\main\\jni\\Android.mk"
+    "F:\\androidProjects\\github\\KotlinTest\\photolibrary\\src\\main\\jni\\Android.mk"
   ],
   "cleanCommands": [
-    "C:\\Users\\pc\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\ndk-build.cmd NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003dD:\\StudioProjects\\KotlinTest\\photolibrary\\src\\main\\jni\\Android.mk APP_ABI\u003darmeabi-v7a NDK_ALL_ABIS\u003darmeabi-v7a NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-16 NDK_OUT\u003dD:/StudioProjects/KotlinTest/photolibrary/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003dD:\\StudioProjects\\KotlinTest\\photolibrary\\build\\intermediates\\ndkBuild\\release\\lib clean"
+    "C:\\Users\\Admin\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\ndk-build.cmd NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003dF:\\androidProjects\\github\\KotlinTest\\photolibrary\\src\\main\\jni\\Android.mk APP_ABI\u003darmeabi-v7a NDK_ALL_ABIS\u003darmeabi-v7a NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-16 NDK_OUT\u003dF:/androidProjects/github/KotlinTest/photolibrary/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003dF:\\androidProjects\\github\\KotlinTest\\photolibrary\\build\\intermediates\\ndkBuild\\release\\lib clean"
   ],
   "libraries": {
     "hello-release-armeabi-v7a": {
-      "buildCommand": "C:\\Users\\pc\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\ndk-build.cmd NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003dD:\\StudioProjects\\KotlinTest\\photolibrary\\src\\main\\jni\\Android.mk APP_ABI\u003darmeabi-v7a NDK_ALL_ABIS\u003darmeabi-v7a NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-16 NDK_OUT\u003dD:/StudioProjects/KotlinTest/photolibrary/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003dD:\\StudioProjects\\KotlinTest\\photolibrary\\build\\intermediates\\ndkBuild\\release\\lib D:/StudioProjects/KotlinTest/photolibrary/build/intermediates/ndkBuild/release/obj/local/armeabi-v7a/libhello.so",
+      "buildCommand": "C:\\Users\\Admin\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\ndk-build.cmd NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003dF:\\androidProjects\\github\\KotlinTest\\photolibrary\\src\\main\\jni\\Android.mk APP_ABI\u003darmeabi-v7a NDK_ALL_ABIS\u003darmeabi-v7a NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-16 NDK_OUT\u003dF:/androidProjects/github/KotlinTest/photolibrary/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003dF:\\androidProjects\\github\\KotlinTest\\photolibrary\\build\\intermediates\\ndkBuild\\release\\lib F:/androidProjects/github/KotlinTest/photolibrary/build/intermediates/ndkBuild/release/obj/local/armeabi-v7a/libhello.so",
       "toolchain": "toolchain-armeabi-v7a",
       "abi": "armeabi-v7a",
       "artifactName": "hello",
       "files": [
         {
-          "src": "D:\\StudioProjects\\KotlinTest\\photolibrary\\src\\main\\jni\\HelloC.c",
-          "flags": "-target armv7-none-linux-androideabi16 -fdata-sections -ffunction-sections -fstack-protector-strong -funwind-tables -no-canonical-prefixes --sysroot C:/Users/pc/AppData/Local/Android/Sdk/ndk-bundle/build//../toolchains/llvm/prebuilt/windows-x86_64/sysroot -g -Wno-invalid-command-line-argument -Wno-unused-command-line-argument -fno-addrsig -fpic -mfpu\u003dvfpv3-d16 -march\u003darmv7-a -mthumb -Oz -DNDEBUG -ID:/StudioProjects/KotlinTest/photolibrary/src/main/jni -DANDROID -Wa,--noexecstack -Wformat -Werror\u003dformat-security"
+          "src": "F:\\androidProjects\\github\\KotlinTest\\photolibrary\\src\\main\\jni\\HelloC.c",
+          "flags": "-target armv7-none-linux-androideabi16 -fdata-sections -ffunction-sections -fstack-protector-strong -funwind-tables -no-canonical-prefixes --sysroot C:/Users/Admin/AppData/Local/Android/Sdk/ndk-bundle/build//../toolchains/llvm/prebuilt/windows-x86_64/sysroot -g -Wno-invalid-command-line-argument -Wno-unused-command-line-argument -fno-addrsig -fpic -mfpu\u003dvfpv3-d16 -march\u003darmv7-a -mthumb -Oz -DNDEBUG -IF:/androidProjects/github/KotlinTest/photolibrary/src/main/jni -DANDROID -Wa,--noexecstack -Wformat -Werror\u003dformat-security"
         }
       ],
-      "output": "D:\\StudioProjects\\KotlinTest\\photolibrary\\build\\intermediates\\ndkBuild\\release\\obj\\local\\armeabi-v7a\\libhello.so"
+      "output": "F:\\androidProjects\\github\\KotlinTest\\photolibrary\\build\\intermediates\\ndkBuild\\release\\obj\\local\\armeabi-v7a\\libhello.so"
     }
   },
   "toolchains": {
     "toolchain-armeabi-v7a": {
-      "cCompilerExecutable": "C:\\Users\\pc\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\build\\..\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang.exe"
+      "cCompilerExecutable": "C:\\Users\\Admin\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\build\\..\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang.exe"
     }
   },
   "cFileExtensions": [

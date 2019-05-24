@@ -36,6 +36,8 @@
         <activity android:name=".ScannerActivity" />
         <activity android:name=".ImportantDayActivity" />
         <activity android:name=".CalendarActivity" />
+        <activity android:name=".GuideActivity" />
+        <activity android:name=".BySunAndClockActivity" />
     </application>
 
 </manifest>

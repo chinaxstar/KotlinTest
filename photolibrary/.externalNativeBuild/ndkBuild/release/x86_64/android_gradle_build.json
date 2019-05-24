@@ -1,28 +1,28 @@
 {
   "buildFiles": [
-    "D:\\StudioProjects\\KotlinTest\\photolibrary\\src\\main\\jni\\Android.mk"
+    "F:\\androidProjects\\github\\KotlinTest\\photolibrary\\src\\main\\jni\\Android.mk"
   ],
   "cleanCommands": [
-    "C:\\Users\\pc\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\ndk-build.cmd NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003dD:\\StudioProjects\\KotlinTest\\photolibrary\\src\\main\\jni\\Android.mk APP_ABI\u003dx86_64 NDK_ALL_ABIS\u003dx86_64 NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-16 NDK_OUT\u003dD:/StudioProjects/KotlinTest/photolibrary/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003dD:\\StudioProjects\\KotlinTest\\photolibrary\\build\\intermediates\\ndkBuild\\release\\lib clean"
+    "C:\\Users\\Admin\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\ndk-build.cmd NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003dF:\\androidProjects\\github\\KotlinTest\\photolibrary\\src\\main\\jni\\Android.mk APP_ABI\u003dx86_64 NDK_ALL_ABIS\u003dx86_64 NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-16 NDK_OUT\u003dF:/androidProjects/github/KotlinTest/photolibrary/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003dF:\\androidProjects\\github\\KotlinTest\\photolibrary\\build\\intermediates\\ndkBuild\\release\\lib clean"
   ],
   "libraries": {
     "hello-release-x86_64": {
-      "buildCommand": "C:\\Users\\pc\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\ndk-build.cmd NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003dD:\\StudioProjects\\KotlinTest\\photolibrary\\src\\main\\jni\\Android.mk APP_ABI\u003dx86_64 NDK_ALL_ABIS\u003dx86_64 NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-16 NDK_OUT\u003dD:/StudioProjects/KotlinTest/photolibrary/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003dD:\\StudioProjects\\KotlinTest\\photolibrary\\build\\intermediates\\ndkBuild\\release\\lib D:/StudioProjects/KotlinTest/photolibrary/build/intermediates/ndkBuild/release/obj/local/x86_64/libhello.so",
+      "buildCommand": "C:\\Users\\Admin\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\ndk-build.cmd NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003dF:\\androidProjects\\github\\KotlinTest\\photolibrary\\src\\main\\jni\\Android.mk APP_ABI\u003dx86_64 NDK_ALL_ABIS\u003dx86_64 NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-16 NDK_OUT\u003dF:/androidProjects/github/KotlinTest/photolibrary/build/intermediates/ndkBuild/release/obj NDK_LIBS_OUT\u003dF:\\androidProjects\\github\\KotlinTest\\photolibrary\\build\\intermediates\\ndkBuild\\release\\lib F:/androidProjects/github/KotlinTest/photolibrary/build/intermediates/ndkBuild/release/obj/local/x86_64/libhello.so",
       "toolchain": "toolchain-x86_64",
       "abi": "x86_64",
       "artifactName": "hello",
       "files": [
         {
-          "src": "D:\\StudioProjects\\KotlinTest\\photolibrary\\src\\main\\jni\\HelloC.c",
-          "flags": "-target x86_64-none-linux-android21 -fdata-sections -ffunction-sections -fstack-protector-strong -funwind-tables -no-canonical-prefixes --sysroot C:/Users/pc/AppData/Local/Android/Sdk/ndk-bundle/build//../toolchains/llvm/prebuilt/windows-x86_64/sysroot -g -Wno-invalid-command-line-argument -Wno-unused-command-line-argument -fno-addrsig -fPIC -O2 -DNDEBUG -ID:/StudioProjects/KotlinTest/photolibrary/src/main/jni -DANDROID -Wa,--noexecstack -Wformat -Werror\u003dformat-security"
+          "src": "F:\\androidProjects\\github\\KotlinTest\\photolibrary\\src\\main\\jni\\HelloC.c",
+          "flags": "-target x86_64-none-linux-android21 -fdata-sections -ffunction-sections -fstack-protector-strong -funwind-tables -no-canonical-prefixes --sysroot C:/Users/Admin/AppData/Local/Android/Sdk/ndk-bundle/build//../toolchains/llvm/prebuilt/windows-x86_64/sysroot -g -Wno-invalid-command-line-argument -Wno-unused-command-line-argument -fno-addrsig -fPIC -O2 -DNDEBUG -IF:/androidProjects/github/KotlinTest/photolibrary/src/main/jni -DANDROID -Wa,--noexecstack -Wformat -Werror\u003dformat-security"
         }
       ],
-      "output": "D:\\StudioProjects\\KotlinTest\\photolibrary\\build\\intermediates\\ndkBuild\\release\\obj\\local\\x86_64\\libhello.so"
+      "output": "F:\\androidProjects\\github\\KotlinTest\\photolibrary\\build\\intermediates\\ndkBuild\\release\\obj\\local\\x86_64\\libhello.so"
     }
   },
   "toolchains": {
     "toolchain-x86_64": {
-      "cCompilerExecutable": "C:\\Users\\pc\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\build\\..\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang.exe"
+      "cCompilerExecutable": "C:\\Users\\Admin\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\build\\..\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang.exe"
     }
   },
   "cFileExtensions": [

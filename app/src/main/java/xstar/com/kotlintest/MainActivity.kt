@@ -121,6 +121,7 @@ class ToolBoxFragment : Fragment() {
                 , ModuleItem("NFC", NFCActivity::class.java, null)
                 , ModuleItem("图片", PhotoActivity::class.java, null)
                 , ModuleItem("扫码", ScannerActivity::class.java, null)
+                , ModuleItem("指向", GuideActivity::class.java, null)
         )
         adapter.onItemClickListner = object : OnItemClickListener<ModuleItem> {
             override fun onItemClick(holder: BaseVH, position: Int, item: ModuleItem) {

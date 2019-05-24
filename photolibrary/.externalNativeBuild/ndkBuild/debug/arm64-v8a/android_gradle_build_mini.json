@@ -1,16 +1,16 @@
 {
   "buildFiles": [
-    "D:\\StudioProjects\\KotlinTest\\photolibrary\\src\\main\\jni\\Android.mk"
+    "F:\\androidProjects\\github\\KotlinTest\\photolibrary\\src\\main\\jni\\Android.mk"
   ],
   "cleanCommands": [
-    "C:\\Users\\pc\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\ndk-build.cmd NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003dD:\\StudioProjects\\KotlinTest\\photolibrary\\src\\main\\jni\\Android.mk APP_ABI\u003darm64-v8a NDK_ALL_ABIS\u003darm64-v8a NDK_DEBUG\u003d1 APP_PLATFORM\u003dandroid-16 NDK_OUT\u003dD:/StudioProjects/KotlinTest/photolibrary/build/intermediates/ndkBuild/debug/obj NDK_LIBS_OUT\u003dD:\\StudioProjects\\KotlinTest\\photolibrary\\build\\intermediates\\ndkBuild\\debug\\lib clean"
+    "C:\\Users\\Admin\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\ndk-build.cmd NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003dF:\\androidProjects\\github\\KotlinTest\\photolibrary\\src\\main\\jni\\Android.mk APP_ABI\u003darm64-v8a NDK_ALL_ABIS\u003darm64-v8a NDK_DEBUG\u003d1 APP_PLATFORM\u003dandroid-16 NDK_OUT\u003dF:/androidProjects/github/KotlinTest/photolibrary/build/intermediates/ndkBuild/debug/obj NDK_LIBS_OUT\u003dF:\\androidProjects\\github\\KotlinTest\\photolibrary\\build\\intermediates\\ndkBuild\\debug\\lib clean"
   ],
   "libraries": {
     "hello-debug-arm64-v8a": {
       "artifactName": "hello",
-      "buildCommand": "C:\\Users\\pc\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\ndk-build.cmd NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003dD:\\StudioProjects\\KotlinTest\\photolibrary\\src\\main\\jni\\Android.mk APP_ABI\u003darm64-v8a NDK_ALL_ABIS\u003darm64-v8a NDK_DEBUG\u003d1 APP_PLATFORM\u003dandroid-16 NDK_OUT\u003dD:/StudioProjects/KotlinTest/photolibrary/build/intermediates/ndkBuild/debug/obj NDK_LIBS_OUT\u003dD:\\StudioProjects\\KotlinTest\\photolibrary\\build\\intermediates\\ndkBuild\\debug\\lib D:/StudioProjects/KotlinTest/photolibrary/build/intermediates/ndkBuild/debug/obj/local/arm64-v8a/libhello.so",
+      "buildCommand": "C:\\Users\\Admin\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\ndk-build.cmd NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003dF:\\androidProjects\\github\\KotlinTest\\photolibrary\\src\\main\\jni\\Android.mk APP_ABI\u003darm64-v8a NDK_ALL_ABIS\u003darm64-v8a NDK_DEBUG\u003d1 APP_PLATFORM\u003dandroid-16 NDK_OUT\u003dF:/androidProjects/github/KotlinTest/photolibrary/build/intermediates/ndkBuild/debug/obj NDK_LIBS_OUT\u003dF:\\androidProjects\\github\\KotlinTest\\photolibrary\\build\\intermediates\\ndkBuild\\debug\\lib F:/androidProjects/github/KotlinTest/photolibrary/build/intermediates/ndkBuild/debug/obj/local/arm64-v8a/libhello.so",
       "abi": "arm64-v8a",
-      "output": "D:\\StudioProjects\\KotlinTest\\photolibrary\\build\\intermediates\\ndkBuild\\debug\\obj\\local\\arm64-v8a\\libhello.so"
+      "output": "F:\\androidProjects\\github\\KotlinTest\\photolibrary\\build\\intermediates\\ndkBuild\\debug\\obj\\local\\arm64-v8a\\libhello.so"
     }
   }
 }
